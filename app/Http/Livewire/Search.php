@@ -41,7 +41,7 @@ class Search extends Component
     public function render()
     {
         $this->categories = Category::all();
-        $this->farms = Farm::all();
+        $this->farms = Farm::where('status',1)->get();
         return view('livewire.search');
     }
 }

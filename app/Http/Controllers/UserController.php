@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,16 @@ class UserController extends Controller
     public function checkout() {
 
         $user = User::find(auth('user')->user()->id);
+        foreach($user->openCart()->orders as $order) {
+            $product = Product::find($order->product_id);
+            if(($product->qty - $order->qty) == 0)
+                $product->update(['qty' => $product->qty - $order->qty ,'available' => 0]);
+            else
+            $product->update(['qty' => $product->qty - $order->qty]);
+
+        }
         $user->openCart()->update(['status' => 'close']);
+
         Cart::create([
             'status' => 'open',
             'user_id' => $user->id,

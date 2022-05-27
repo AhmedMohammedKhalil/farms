@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('status')->default(0);
             $table->string('phone',8);
             $table->string('farms_logo')->nullable();
             $table->string('owner_image')->nullable();

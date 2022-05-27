@@ -4,6 +4,7 @@
             {{ session('error') }}
         </div>
     @endif
+
     <div class="checkout-form-list">
         <label>الإيميل<span class="required">*</span></label>
         <input type="email"  wire:model.lazy='email' placeholder="الايميل" />
@@ -15,6 +16,9 @@
         <input type="password" wire:model.lazy='password' placeholder="الباسورد" />
         @error('password') <span class="text-danger error">{{ $message }}</span>@enderror
 
+    </div>
+    <div class="checkout-form-list create-acc">
+        <label><a href="{{ route('farm.register') }}">ليس لديك حساب ؟</a></label>
     </div>
     <div class="order-button-payment mt-20">
         <button type="submit" class="tp-btn-h1">تسجيل دخول</button>

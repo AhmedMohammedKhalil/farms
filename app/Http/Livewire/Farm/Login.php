@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Farm;
 
+use App\Models\Farm;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,11 +26,21 @@ class Login extends Component
     public function login()
     {
         $validatedData = $this->validate();
-        if (Auth::guard('farm')->attempt($validatedData)) {
+        $data = array_merge(
+            $validatedData,
+            ['status' => 1]
+        );
+        if (Auth::guard('farm')->attempt($data)) {
             session()->flash('message', "تم تسجيل الدخول بنجاح");
             return redirect()->route('home');
         } else {
-            session()->flash('error', 'الايميل او كلمة السر غير صحيح');
+            $farm = Farm::where('email',$this->email)->first();
+            if($farm->status == 0)
+                session()->flash('error', 'عذرا لا يتم الموافقه عليك الى الان');
+            else if($farm->status == 2)
+                session()->flash('error', 'عذرا تم رفضك من قبل المسئولين');
+            else
+                session()->flash('error', 'الايميل او كلمة السر غير صحيح');
         }
     }
     public function render()

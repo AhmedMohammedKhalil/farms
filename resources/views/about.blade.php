@@ -1,13 +1,12 @@
 @extends('layout')
 @section('title', 'من نحن')
 @section('main')
-<div class="about-area pt-120 " style="min-height: 40vh">
+<div class="about-area pt-120 " style="min-height: 80vh">
     <div class="container">
         <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="tp-section-wrap">
-                    <span class="asub-title grace-span">- عن الموقع </span>
-                    <h3 class="tp-section-title"> من نحن </h3>
+            <div class="image col-xl-6 col-lg-6">
+                <div class="tp-section-wrap" style="">
+                    <h3 class="tp-section-title" > من نحن </h3>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6">

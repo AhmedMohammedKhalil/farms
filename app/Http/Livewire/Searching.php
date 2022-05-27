@@ -13,6 +13,8 @@ class Searching extends Component
 
     protected $listeners = [
         'showResult',
+        'refresh'=>'makeRefresh'
+
     ];
 
     public function showResult($products) {
@@ -27,8 +29,16 @@ class Searching extends Component
             $this->products = '';
         }
     }
+
+
+    public function makeRefresh() {
+        $this->emit('refreshProduct');
+        $this->emit('$refresh');
+    }
+
     public function render()
     {
+        //if($this->flag == true) dd($this->products);
         $this->products = $this->flag == true ? $this->products : Product::all();
         return view('livewire.searching');
     }

@@ -1,5 +1,12 @@
 @extends('layout')
 @section('title', 'بحث')
+@push('css')
+    <style>
+        main {
+            background-image: url('{{ asset('assets/img/bg/bg2.png') }}')
+        }
+    </style>
+@endpush
 @section('main')
 <div class="news-detalis-area mt-120 mb-65">
     <div class="container">

@@ -11,8 +11,13 @@
     </div>
     <div class="checkout-form-list">
         <label>سعر المنتج<span class="required">*</span></label>
-        <input type="number" value="1" step="0.01" wire:model.lazy='price' placeholder="سعر المنتج" class="form-control"/>
+        <input type="number" value="{{ $price }}"  min="0.01" step="0.01" wire:model.lazy='price' class="form-control"/>
         @error('price') <span class="text-danger error">{{ $message }}</span>@enderror
+    </div>
+    <div class="checkout-form-list">
+        <label>الكمية<span class="required">*</span></label>
+        <input type="number" value="{{ $qty }}" min="0" wire:model.lazy='qty'  class="form-control"/>
+        @error('qty') <span class="text-danger error">{{ $message }}</span>@enderror
     </div>
 
     <div class="checkout-form-list">

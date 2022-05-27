@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('available')->default(1);
             $table->double('price');
+            $table->integer('qty');
             $table->text('details');
             $table->text('image')->nullable();
             $table->integer('category_id')->unsigned();

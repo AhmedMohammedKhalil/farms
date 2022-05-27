@@ -25,7 +25,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $cart->orders->count() }}</td>
-                                        <td>{{ $cart->total }} دينار كويتى </td>
+                                        <td>{{ round($cart->total, 2) }} دينار كويتى </td>
                                         <td><a href="{{ route('user.orders',['id' => $cart->id]) }}"><i class="fa fa-eye"></i></a></td>
                                     </tr>
                                 @endforeach

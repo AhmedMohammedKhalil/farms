@@ -13,9 +13,9 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    font-size: 15px;
-    font-weight: normal;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
     line-height: 28px;
 }
 
@@ -105,8 +105,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Prata", serif;
-    color: #31512a;
+    font-family: serif;
+    color: #000;
     margin-top: 0px;
     font-weight: 500;
     line-height: 1.2;
@@ -842,7 +842,7 @@ body:not(.modal-open) {
 
 
 .main-menu ul li a {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 28px;
     font-weight: 400;
     text-transform: capitalize;
@@ -956,7 +956,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .main-menu-h1 ul li a {
-    color: #777777;
+    color: #000;
 }
 
 .main-menu-h1 ul li a::before {

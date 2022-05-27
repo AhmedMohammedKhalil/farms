@@ -13,15 +13,15 @@ class Edit extends Component
 
     use WithFileUploads;
 
-    public $name,$price,$details,$image,$product,$category_id,$categories;
+    public $name,$price,$qty,$details,$image,$product,$category_id,$categories;
 
     public function mount($product_id) {
         $this->product = Product::whereId($product_id)->first();
         $this->name = $this->product->name;
         $this->price = $this->product->price;
+        $this->qty = $this->product->qty;
         $this->details = $this->product->details;
         $this->category_id = $this->product->category->id;
-
     }
 
     protected $rules = [
@@ -50,11 +50,36 @@ class Edit extends Component
     ];
 
     public function edit() {
-        $data = $this->validate();
+        $gt = $this->product->productqty() > 0 ? $this->product->productqty() : -1;
+
+        $data = $this->validate(array_merge(
+            $this->rules,
+            [
+                'qty' => ['required','numeric','gt:'.$gt],
+            ]
+            ),
+            array_merge(
+                $this->messages,
+                [
+                    'qty.gt' => 'لا بد ان يكون اكبر من '.$gt
+                ]
+            )
+        );
         $imagename = "";
         if($this->image) {
             $imagename = $this->image->getClientOriginalName();
             $data = array_merge($data,['image' => $imagename]);
+        }
+        if($this->qty == 0) {
+            $data = array_merge(
+                $data,
+                ['available' => 0]
+            );
+        } else {
+            $data = array_merge(
+                $data,
+                ['available' => 1]
+            );
         }
         Product::whereId($this->product->id)->update($data);
         if($this->image) {

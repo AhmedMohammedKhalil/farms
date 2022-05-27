@@ -53,7 +53,7 @@
                             <div class="cart-page-total">
                                 <h2>إجمالى الفاتورة</h2>
                                 <ul class="mb-20">
-                                    <li>{{ $cart->total }} دينار كويتى </li>
+                                    <li>{{ round($cart->total, 2) }} دينار كويتى </li>
                                 </ul>
                                 @if($cart->orders->count() > 0)
                                     <a class="tp-btn-h1" href="{{ route('user.checkout') }}">تقفيل الفاتورة</a>

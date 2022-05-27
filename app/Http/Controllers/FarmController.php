@@ -57,14 +57,19 @@ class FarmController extends Controller
     }
 
 
-    public function create() {
-        return view('admins.farms.add');
+    public function accept(Request $r) {
+        $farm = Farm::find($r->id);
+        $farm->update(['status' => 1]);
+        return redirect()->route('admin.farms');
+
     }
 
 
-    public function edit(Request $r) {
+    public function reject(Request $r) {
         $farm = Farm::find($r->id);
-        return view('admins.farms.edit',compact('farm'));
+        $farm->update(['status' => 2]);
+        return redirect()->route('admin.farms');
+
     }
 
 

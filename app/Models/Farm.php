@@ -20,6 +20,7 @@ class Farm extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
         'owner_image',
         'owner_name',
         'phone',

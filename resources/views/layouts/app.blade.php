@@ -26,41 +26,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/fontAwesome5Pro.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/default.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css')}}">
+
 
     @livewireStyles()
     <style>
-        input,textarea{
-            padding-right: 15px !important
-        }
 
-        .checkout-area ,.cart-area{
-            min-height: 70vh !important
-        }
-        .sub-menu li {
-            text-align: center
-        }
 
-        .firm-services-lists li a::before {
-            right: 0 !important;
-            left: auto !important;
 
-        }
-
-        .btn-add {
-            background: #5b8c51;
-            border: #5b8c51;
-            width: fit-content;
-            margin: auto;
-            display: block;
-            margin-bottom: 20px;
-            color: white
-        }
 
 
     </style>
     @stack('css')
 </head>
-<body>
+<body style="">
 
 
     <!-- pre loader area start -->
@@ -86,7 +65,7 @@
     <!-- header-start -->
     <header>
         <div class="header__area header-area-white">
-            <div class="header-white-area theme-bg-secondary-h1" id="header-sticky">
+            <div class="header-white-area theme-bg-secondary-h1" id="header-sticky" style="background: #F7F7F7">
                 <div class="container">
                     <div class="row align-items-center">
 
@@ -116,7 +95,6 @@
                                                 <ul class="sub-menu-h1 sub-menu ">
                                                     <li><a href="{{ route('user.profile') }}">البروفايل</a></li>
                                                     <li><a href="{{ route('user.cart') }}">عربة المشتريات</a></li>
-                                                    {{-- <li>@livewire('user.balance')</li> --}}
                                                     <li><a href="{{ route('user.logout') }}">خروج</a></li>
                                                 </ul>
                                             </li>
@@ -131,14 +109,13 @@
                                                     <li><a href="{{ route('user.login') }}">المستخدم</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="{{ route('user.register') }}">أنشاء حساب</a></li>
                                         @endif
-
+                                        <li><a href="{{ route('home') }}">الرئيسية</a></li>
+                                        <li><a href="{{ route('products') }}">المنتجات</a></li>
                                         <li><a href="{{ route('about') }}">من نحن</a></li>
                                         <li><a href="{{ route('compare') }}">مقارنة</a></li>
                                         <li><a href="{{ route('search') }}">بحث</a></li>
-                                        <li><a href="{{ route('products') }}">المنتجات</a></li>
-                                        <li><a href="{{ route('home') }}">الرئيسية</a></li>
+
                                     </ul>
                                 </nav>
                             </div>
@@ -149,7 +126,7 @@
                         </div>
                         <div class="col-xl-2 col-lg-3 col-md-3 col-3">
                             <div class="logo">
-                                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/preloader.jpeg') }}" style="width: 150px;height:100px" alt=""></a>
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/favicon.png') }}" style="width: 150px;height:100px" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -169,7 +146,7 @@
             <div class="sidebar__content">
                 <div class="sidebar__logo mb-40" dir="ltr">
                     <a href="{{ route('home') }}">
-                  <img src="{{ asset('assets/img/preloader.jpeg') }}" alt="logo">
+                  <img src="{{ asset('assets/img/favicon.png') }}" alt="logo">
                   </a>
                 </div>
                 <div class="mobile-menu fix"></div>
@@ -184,11 +161,20 @@
         </main>
     <!-- footer -->
     <footer>
+        <div class="cover" style="background-image: url('{{ asset('assets/img/sep.png') }}'); height:11px;">
+        </div>
         <div class="copy-right-area theme-bg-common pt-30">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="w-auto">
-                        <p class="mb-30 copy-right-text-1">  &copy;جميع الحقوق محفوظة  @ 2022</p>
+                        <p class="mb-30 copy-right-text-1">
+                              &copy;جميع الحقوق محفوظة @
+                              <span dir="ltr">
+                                2022 -
+                                National Farms
+                              </span>
+                              </p>
+
                     </div>
                 </div>
             </div>
@@ -215,5 +201,12 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     @livewireScripts()
     @stack('js')
+    <script>
+    $( document ).ready(function() {
+        livewire.on('refreshProduct', data => {
+            $('.modal-backdrop').remove();
+        });
+    });
+    </script>
 </body>
 </html>

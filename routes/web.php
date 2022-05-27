@@ -28,6 +28,8 @@ Route::middleware(['guest:admin', 'guest:user', 'guest:farm'])->group(function (
     Route::get('/user/login', 'UserController@showLogin')->name('user.login');
     Route::get('/user/register', 'UserController@showRegister')->name('user.register');
     Route::get('/farm/login', 'FarmController@showLogin')->name('farm.login');
+    Route::get('/farm/register', 'FarmController@showRegister')->name('farm.register');
+
 
 });
 
@@ -42,9 +44,8 @@ Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(functi
 
 
     Route::get('/farms','FarmController@index')->name('farms');
-    Route::get('/farms/create','FarmController@create')->name('farms.create');
-    Route::get('/farms/edit','FarmController@edit')->name('farms.edit');
-    Route::get('/farms/delete','FarmController@delete')->name('farms.delete');
+    Route::get('/farms/accept','FarmController@accept')->name('farms.accept');
+    Route::get('/farms/reject','FarmController@reject')->name('farms.reject');
 
     Route::get('/categories','CategoryController@index')->name('categories');
     Route::get('/categories/create','CategoryController@create')->name('categories.create');

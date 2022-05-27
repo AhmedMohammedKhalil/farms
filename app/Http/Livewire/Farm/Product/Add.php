@@ -12,11 +12,12 @@ class Add extends Component
 {
     use WithFileUploads;
 
-    public $name,$price,$details,$image,$category_id,$categories;
+    public $name,$price = 0.01 , $qty= 1,$details,$image,$category_id,$categories;
 
     protected $rules = [
         'name' => ['required', 'string', 'max:100'],
         'price' => ['required','numeric','gt:0'],
+        'qty' => ['required','numeric','gt:0'],
         'details' => ['required', 'string'],
         'category_id' => ['required'],
     ];
@@ -63,6 +64,7 @@ class Add extends Component
     public function render()
     {
         $this->categories = Category::all();
+
         return view('livewire.farm.product.add');
     }
 }

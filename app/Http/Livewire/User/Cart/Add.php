@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\User\Cart;
 
-use App\Http\Livewire\User\Balance;
+use App\Http\Livewire\Comparing;
+use App\Http\Livewire\Products;
+use App\Http\Livewire\Searching;
 use App\Models\Product;
 use App\Models\User;
 use Livewire\Component;
@@ -17,7 +19,11 @@ class Add extends Component
         $this->cart = $this->user->openCart();
     }
 
+
+
+
     public function plus() {
+        if($this->qty < ($this->product->qty - $this->product->productqty()))
             $this->qty++;
     }
 
@@ -27,21 +33,25 @@ class Add extends Component
     }
 
     public function add() {
+        $t = $this->product->qty - $this->product->productqty();
+        $data = $this->validate(
+            ['qty' => ['required','numeric','gt:0','lte:'.$t]] ,
+            [
+                'gt' => 'لابد ان يكون اكبر من 0',
+                'required' => 'هذا الحقل مطلوب',
+                'lte' => 'لا بد ان يكون الرقم اصغر من او يساوى '.$t
+            ]
+        );
+
         $total = $this->qty * $this->product->price;
         $this->cart->products()->attach($this->product->id,['qty' => $this->qty]);
         $this->cart->update(['total' => $this->cart->total + $total]);
         session()->flash('success', 'تم طلبك بنجاح');
         $this->qty = 1;
 
-        //$this->user->update(['balance' => $this->user->balance - $total]);
-        //$this->emitTo(Balance::class,'changeBalance',$this->user->balance);
-        // if($this->user->balance >= $total)
-        // {
-        //     session()->flash('success', 'تم طلبك بنجاح');
-        // } else {
-        //     $this->qty = 1;
-        //     session()->flash('error', 'لايوجد نقود كافية لإتمام طلبك');
-        // }
+        $this->emitTo(Products::class,'refresh');
+        $this->emitTo(Searching::class,'refresh');
+        $this->emitTo(Comparing::class,'refresh');
 
     }
     public function render()

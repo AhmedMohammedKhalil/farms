@@ -1,0 +1,406 @@
+:root {
+    --main-color: #64982E;
+    --main-color-alt: rgb(101, 153, 46);
+    --main-transition: 0.3s;
+    --main-padding-top: 100px;
+    --main-padding-bottom: 100px;
+    --section-background: #ececec;
+  }
+
+main {
+    background-image: url('../img/bg/13.png');
+    background-size: contain;
+}
+input,textarea{
+    padding-right: 15px !important
+}
+
+.checkout-area ,.cart-area{
+    min-height: 70vh !important
+}
+.sub-menu li {
+    text-align: center
+}
+
+.firm-services-lists li a::before {
+    right: 0 !important;
+    left: auto !important;
+
+}
+
+.bottom {
+    background-image: url('../img/bg/bottom.png');
+    position: absolute;
+    bottom: -6px;
+    width: 100%;
+    height: 20px;
+}
+
+.btn-add {
+    background: #5b8c51;
+    border: #5b8c51;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    margin-bottom: 20px;
+    color: white
+}
+
+.landing-title {
+    position: relative;
+    animation: up-and-down 5s linear infinite;
+}
+
+.tp-section-title {
+    font-size: 50px;
+    color: #31512a;
+    margin-bottom: 20px;
+    line-height: 60px;
+    margin: auto;
+    width: fit-content;
+    border-bottom: 40px solid;
+    border-image: url('../img/shape.svg') 36 round;
+}
+
+.widget , .firm-services-lists{
+    margin: 20px 0;
+    box-shadow: 0px 0px 15px grey;
+    border-radius: 20px;
+    padding: 20px ;
+}
+
+
+.articles {
+    padding-top: var(--main-padding-top);
+    padding-bottom: var(--main-padding-bottom);
+    position: relative;
+  }
+  .articles .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+  }
+  .articles .box {
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform var(--main-transition), box-shadow var(--main-transition);
+  }
+  .articles .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+  }
+  .articles .box img {
+    width: 100%;
+    max-width: 100%;
+  }
+  .articles .box .content {
+    padding: 20px;
+  }
+  .articles .box .content h3 {
+    margin: 0;
+    text-align: center;
+  }
+  .articles .box .content p {
+    margin: 10px 0 0;
+    line-height: 1.5;
+    color: #777;
+  }
+  .articles .box .info {
+    padding: 20px;
+    border-top: 1px solid #e6e6e7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .articles .box .info a {
+    color: var(--main-color);
+    font-weight: bold;
+  }
+  .articles .box .info i {
+    color: var(--main-color);
+  }
+  .articles .box:hover .info i {
+    animation: moving-arrow 0.6s linear infinite;
+  }
+
+
+  @keyframes moving-arrow {
+    100% {
+      transform: translateX(10px);
+    }
+  }
+
+
+
+  .features {
+    padding-top: var(--main-padding-top);
+    padding-bottom: var(--main-padding-bottom);
+    position: relative;
+  }
+  .features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+  }
+  .features .box {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--main-transition);
+
+  }
+  .features .box .img-holder {
+    position: relative;
+    overflow: hidden;
+  }
+  .features .box .img-holder::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 100%;
+    height: 100%;
+  }
+  .features .box .img-holder::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0px 0px 170px 500px;
+    border-color: transparent transparent white transparent;
+    transition: var(--main-transition);
+  }
+  .features .box .img-holder img {
+    max-width: 100%;
+  }
+  .features .box:hover .img-holder::after {
+    border-width: 170px 500px 170px 0;
+  }
+  .features .box h2 {
+    position: relative;
+    font-size: 40px;
+    margin: auto;
+    width: fit-content;
+  }
+  .features .box h2::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 15px;
+    height: 5px;
+    width: calc(100% - 30px);
+  }
+  .features .box h2 + div {
+    line-height: 2;
+    font-size: 20px;
+    margin: 30px 0;
+    padding: 25px;
+    color: #777;
+  }
+  .features .box a {
+    display: block;
+    border: 3px solid transparent;
+    width: fit-content;
+    margin: 0 auto 30px;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 10px 30px;
+    border-radius: 6px;
+    transition: var(--main-transition);
+  }
+
+  .features .farm .img-holder::before {
+    background-color: rgb(101 153 46 / 60%);
+  }
+  .features .farm h2::after {
+    background-color: var(--main-color);
+  }
+  .features .farm a {
+    color: var(--main-color);
+    border-color: var(--main-color);
+    background: linear-gradient(to right, var(--main-color) 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+  }
+
+  .features .box:hover a {
+    background-position: left bottom;
+    color: white;
+  }
+
+  .features .box:hover {
+      box-shadow: 0px 0px 20px gray;
+  }
+
+
+
+  .portfolio .box {
+    overflow: hidden;
+    position: relative;
+    margin: 20px 10px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px gray;
+
+  }
+  .portfolio  .box:hover .caption {
+    bottom: -100%;
+  }
+  .portfolio  .box:hover img {
+    transform: rotate(3deg) scale(1.1);
+
+  }
+
+  .portfolio  .box img {
+    max-width: 100%;
+    transition: 0.3s;
+  }
+  .portfolio .box .caption {
+    position: absolute;
+    left: 0;
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    transition: 0.3s;
+    bottom: 0;
+    text-align: center;
+  }
+  .portfolio .box .caption h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .portfolio .box .caption p {
+    font-weight: bold;
+    color: var(--main-color);
+  }
+
+
+  .features .box:hover , .portfolio .box:hover {
+    box-shadow: 0px 0px 20px gray;
+}
+
+.about-area .container{
+    background-color: white;
+}
+
+.about-area .row{
+    align-items: center;
+
+}
+
+.about-area .tp-section-wrap{
+    height: 300px;
+    background-image:url('../img/bg3.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: right;
+
+}
+
+
+.modal-content {
+    box-shadow: 0px 0px 10px gray;
+    border-radius: 30px;
+}
+
+.modal-content h4 {
+    width: fit-content;
+    padding: unset;
+    margin: auto;
+    border-bottom: 11px solid;
+    border-image: url('../img/sep.png') 36 round;
+}
+
+  @keyframes up-and-down {
+    0%,
+    100% {
+      top: 0;
+    }
+    50% {
+      top: -50px;
+    }
+  }
+
+
+
+  .farm-products .box {
+    position: relative;
+    margin: 20px 0;
+  }
+  .farm-products .box::before,
+  .farm-products .box::after {
+    content: "";
+    background-color: #f3f3f3;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 10px;
+    transition: var(--main-transition);
+  }
+  .farm-products .box::before {
+
+    width: calc(100% - 60px);
+    z-index: -2;
+  }
+  .farm-products .box::after {
+    z-index: -1;
+    background-color: #e4e4e4;
+    width: 0;
+  }
+  .farm-products .box:hover::after {
+    width: calc(100% - 60px);
+  }
+  .farm-products .box .data {
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+  }
+  .farm-products .box .data img {
+    width: calc(100% - 60px);
+    transition: var(--main-transition);
+    border-radius: 10px;
+  }
+  .farm-products .box:hover img {
+    filter: grayscale(50%);
+  }
+  .farm-products .box .data .social {
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .farm-products .box .data .social a {
+    width: 60px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .farm-products .box .data .social a:hover i {
+    color: var(--main-color);
+  }
+  .farm-products .box .data .social i {
+    color: #777;
+    transition: var(--main-transition);
+  }
+  .farm-products .box .info {
+    padding: 20px 80px 2px 0;
+    font-size: 30px !important;
+  }
+  .farm-products .box .info h3 {
+    margin-bottom: 0;
+    color: var(--main-color);
+    font-size: 22px !important;
+    transition: var(--main-transition);
+  }
+  .farm-products .box .info p {
+    margin-top: 10px;
+    font-size: 22px !important;
+    margin-bottom: 25px;
+  }
+

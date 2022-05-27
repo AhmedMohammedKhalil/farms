@@ -6,9 +6,6 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="{{ route('admin.farms.create') }}" class="btn btn-add">إضافة مزرعة جديد</a>
-            </div>
-            <div class="col-12">
                     <div class="table-content table-responsive">
                         <table class="table">
                             <thead>
@@ -18,11 +15,12 @@
                                     <th>إسم المزرعة</th>
                                     <th>صاحب المزرعة</th>
                                     <th>الموبايل</th>
+                                    <th>الحالة</th>
                                     <th>الإعدادات</th>
                                 </tr>
                                 @if($farms->count() == 0)
                                     <tr>
-                                        <th colspan="4">لا يوجد مزارع</th>
+                                        <th colspan="7">لا يوجد مزارع</th>
                                     </tr>
                                 @endif
                             </thead>
@@ -41,9 +39,20 @@
                                         <td>{{ $f->owner_name }}</td>
                                         <td>{{ $f->phone }}</td>
                                         <td>
-                                            <a href="{{ route('admin.farms.edit',['id' => $f->id]) }}"><i class="fa fa-edit"></i></a>
-                                            @if($f->products->count() == 0)
-                                                <a href="{{ route('admin.farms.delete',['id' => $f->id]) }}"><i class="fa fa-trash-alt"></i></a>
+                                            @if($f->status == 0)
+                                                إنتظار
+                                            @elseif ($f->status == 1)
+                                                تم القبول
+                                            @else
+                                                تم الرفض
+                                            @endif
+                                        </td>
+
+                                        <td>
+
+                                            @if($f->status == 0)
+                                                <a href="{{ route('admin.farms.accept',['id' => $f->id]) }}">قبول</a>
+                                                <a href="{{ route('admin.farms.reject',['id' => $f->id]) }}">رفض</a>
                                             @endif
 
                                         </td>

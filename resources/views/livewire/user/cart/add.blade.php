@@ -11,6 +11,8 @@
             <button class="tp-btn-h1" type="submit">أضف للعربة</button>
         </div>
     </div>
+    @error('qty') <span class="text-danger error">{{ $message }}</span>@enderror
+
     @if (session()->has('success'))
         <div class="col-lg-12 alert alert-success">
             {{ session('success') }}

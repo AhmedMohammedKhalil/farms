@@ -1,5 +1,12 @@
 @extends('layout')
 @section('title', 'مقارنة')
+@push('css')
+    <style>
+        main {
+            background-image: url('{{ asset('assets/img/bg/bg2.png') }}')
+        }
+    </style>
+@endpush
 @section('main')
 <div class="news-detalis-area mt-65 mb-65" style="min-height:40vh">
     <div class="container">

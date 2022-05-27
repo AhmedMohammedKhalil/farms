@@ -12,7 +12,7 @@ class Comparing extends Component
 
     protected $listeners = [
         'showCompareResult',
-        'refresh'=>'$refresh'
+        'refresh'=>'makeRefresh'
     ];
 
     public function showCompareResult($ids) {
@@ -22,8 +22,13 @@ class Comparing extends Component
         } else {
             $this->products = '';
         }
-        $this->emitSelf('refresh');
     }
+
+    public function makeRefresh() {
+        $this->emit('refreshProduct');
+        $this->emit('$refresh');
+    }
+
     public function render()
     {
         $this->products = $this->flag == true ? $this->products : '';
